@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 
 interface MobileModalProps {
   theme: "light" | "dark";
-  setShowModal: (cond: Boolean) => void;
+  setShowModal: (cond: boolean) => void;
   handleThemeChange: () => void;
 }
 

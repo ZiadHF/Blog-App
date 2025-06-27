@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Post, PostsResponse } from "@/types/post";
 import { fetchPostById, fetchPosts } from "@/lib/api";
 
@@ -9,7 +9,7 @@ export function usePosts(currentPage: number = 1, perPage: number = 6) {
   const [error, setError] = useState<string | null>(null);
   const [totalPages, setTotalPages] = useState<number>(0);
 
-  const loadPosts = async () => {
+  const loadPosts = useCallback(async () => {
     try {
       setIsLoading(true);
       const fetchedPosts: PostsResponse = await fetchPosts(
@@ -25,11 +25,11 @@ export function usePosts(currentPage: number = 1, perPage: number = 6) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [currentPage, perPage]);
 
   useEffect(() => {
     loadPosts();
-  }, [currentPage, perPage]);
+  }, [loadPosts]);
 
   return { posts, isLoading, error, totalPages };
 }
@@ -43,7 +43,7 @@ export function usePost(postId: string) {
     throw new Error("Post ID is required");
   }
 
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     try {
       setIsLoading(true);
       const fetchedPost = await fetchPostById(postId);
@@ -58,11 +58,11 @@ export function usePost(postId: string) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [postId]);
 
   useEffect(() => {
     fetchPost();
-  }, [postId]);
+  }, [fetchPost]);
 
   return { post, isLoading, error };
 }

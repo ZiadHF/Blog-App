@@ -61,7 +61,8 @@ function AllPostsSection() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const { posts, isLoading, error, totalPages } = usePosts(currentPage);
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = (page: number | string) => {
+    if (typeof page === "string") return;
     setCurrentPage(page);
     document.getElementById("all-posts-section")?.scrollIntoView({
       behavior: "smooth",

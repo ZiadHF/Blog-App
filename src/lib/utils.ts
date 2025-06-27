@@ -81,7 +81,7 @@ export function truncateText(text : string, maxLength : number) : string {
  * @param url - The URL to check if it is an image.
  * @returns A boolean indicating whether the URL is likely to be an image based on its file extension.
  */
-export const isImageFastCheck = (url: string) : Boolean => {
+export const isImageFastCheck = (url: string) : boolean => {
   return /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(url);
 };
 

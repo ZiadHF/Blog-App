@@ -8,7 +8,7 @@ import MobileModal from "./mobile-modal";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
-  const [showModal, setShowModal] = useState<Boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const handleThemeChange = () => {
     setTheme(theme === "light" ? "dark" : "light");

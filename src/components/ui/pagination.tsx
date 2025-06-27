@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react";
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: any) => void;
+  onPageChange: (page: number | string) => void;
   isLoading?: boolean;
   showFirstLast?: boolean;
   maxVisiblePages?: number;
