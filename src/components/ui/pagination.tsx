@@ -1,4 +1,3 @@
-import React from "react";
 import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react";
 
 interface PaginationProps {

@@ -23,7 +23,9 @@ export default function Header() {
           handleThemeChange={handleThemeChange}
         />
       )}
-      <h1 className="font-semibold text-primary">THE BLOG</h1>
+      <Link href="/posts">
+        <h1 className="font-semibold text-primary hover:scale-110 duration-300 ease-in-out">THE BLOG</h1>
+      </Link>
       <div className="hidden md:flex items-start">
         <Link href="/posts" className="mr-4 text-primary hover:underline">
           Posts
