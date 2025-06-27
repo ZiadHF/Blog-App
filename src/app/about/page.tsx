@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-4xl mx-auto space-y-8 text-center sm:text-start">
       <h1 className="text-4xl font-bold text-primary mb-6">About This Blog</h1>
 
       <section>
@@ -41,7 +41,7 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <div className="flex flex-col sm:flex-row gap-4 items-start">
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
           <Link
             href="https://github.com/ZiadHF"
             target="_blank"
