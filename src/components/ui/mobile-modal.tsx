@@ -19,10 +19,10 @@ export default function MobileModal({
         <div />
         <div className="flex flex-col items-center space-y-4">
           <div className="mb-8 font-semibold text-lg">Ziad Hesham</div>
-          <Link href="/posts" className="text-primary hover:underline">
+          <Link onClick={() => setShowModal(false)} href="/posts" className="text-primary hover:underline">
             Posts
           </Link>
-          <Link href="/about" className="mb-8 text-primary hover:underline">
+          <Link onClick={() => setShowModal(false)} href="/about" className="mb-8 text-primary hover:underline">
             About
           </Link>
           <ThemeButton theme={theme} onClick={handleThemeChange} />

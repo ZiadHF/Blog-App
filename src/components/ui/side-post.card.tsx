@@ -23,16 +23,19 @@ export default function SidePostCard(props: SidePostCardProps) {
   return (
     <article className="grid md:grid-cols-2 gap-4 relative">
       <div className="relative overflow-hidden h-48 md:h-full">
-        <Image
-          src={
-            props.coverImage || `https://picsum.photos/seed/${props.id}/800/400`
-          }
-          alt={props.title}
-          fill
-          className="object-cover"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChAI9jU77zgAAAABJRU5ErkJggg=="
-        />
+        <Link href={`/posts/${props.id}`}>
+          <Image
+            src={
+              props.coverImage ||
+              `https://picsum.photos/seed/${props.id}/800/400`
+            }
+            alt={props.title}
+            fill
+            className="object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChAI9jU77zgAAAABJRU5ErkJggg=="
+          />
+        </Link>
       </div>
       <div className="space-y-4 break-all">
         <h4 className="font-medium text-sm text-purple-700 dark:text-purple-300">

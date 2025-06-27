@@ -64,10 +64,12 @@ function AllPostsSection() {
   const handlePageChange = (page: number | string) => {
     if (typeof page === "string") return;
     setCurrentPage(page);
-    document.getElementById("all-posts-section")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    setTimeout(() => {
+      document.getElementById("all-posts-section")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 100);
   };
 
   if (error) {
@@ -80,7 +82,7 @@ function AllPostsSection() {
   }
 
   return (
-    <section className="mt-8">
+    <section id="all-posts-section" className="mt-8 scroll-mt-8">
       <h2 className="mb-6 font-semibold text-xl">All blog posts</h2>
 
       {isLoading ? (
@@ -90,17 +92,14 @@ function AllPostsSection() {
           ))}
         </div>
       ) : (
-        <div
-          id="all-posts-section"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {posts.map((post) => (
             <BigPostCard key={post.id} {...post} />
           ))}
         </div>
       )}
 
-      {((posts.length === 0 && !isLoading)) && (
+      {posts.length === 0 && !isLoading && (
         <div className="text-center text-primary mb-4">
           No posts available at the moment.
         </div>
@@ -118,7 +117,7 @@ function AllPostsSection() {
 
 export default function PostsPage() {
   return (
-    <div className="">
+    <div className="w-full">
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-5xl md:text-8xl lg:text-[10rem] xl:text-[13rem] font-bold my-16 border-y border-primary/30 tracking-wide">
@@ -128,9 +127,9 @@ export default function PostsPage() {
       {/* Recent Posts Section */}
       <section>
         <h2 className="mb-8 font-semibold text-xl">Recent blog posts</h2>
-          <FeaturedSection />
+        <FeaturedSection />
       </section>
-        <AllPostsSection />
+      <AllPostsSection />
     </div>
   );
 }

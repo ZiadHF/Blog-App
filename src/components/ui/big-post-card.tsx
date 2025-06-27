@@ -25,17 +25,20 @@ export default function BigPostCard(props: BigPostCardProps) {
   return (
     <article>
       <div className="relative overflow-hidden mb-4">
-        <Image
-          src={
-            props.coverImage || `https://picsum.photos/seed/${props.id}/800/400`
-          }
-          alt={props.title}
-          width={800}
-          height={400}
-          className="object-cover w-full"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEUlEQVR42mNkYGBgYGDYBwAABQAB6QNFTwAAAABJRU5ErkJggg=="
-        />
+        <Link href={`/posts/${props.id}`}>
+          <Image
+            src={
+              props.coverImage ||
+              `https://picsum.photos/seed/${props.id}/800/400`
+            }
+            alt={props.title}
+            width={800}
+            height={400}
+            className="object-cover w-full duration-300 hover:scale-105 ease-in-out"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEUlEQVR42mNkYGBgYGDYBwAABQAB6QNFTwAAAABJRU5ErkJggg=="
+          />
+        </Link>
       </div>
 
       <div className="space-y-4">

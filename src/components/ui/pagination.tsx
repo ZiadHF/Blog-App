@@ -1,7 +1,6 @@
 import React from "react";
 import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react";
 
-
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
@@ -39,7 +38,7 @@ const PageNavigationButton = ({
     disabled={disabled || isLoading}
   >
     <Icon className="w-4 h-4" />
-    {text}
+    <span className="hidden md:block">{text}</span>
   </button>
 );
 
@@ -54,7 +53,9 @@ const PageButton = ({
     className={`
       px-3 py-2 text-sm font-medium rounded-lg transition-colors
       ${
-        isCurrent ? "bg-primary text-background" : "text-primary/50 not-disabled:hover:bg-primary/60 not-disabled:hover:text-background cursor-pointer disabled:cursor-default "
+        isCurrent
+          ? "bg-primary text-background"
+          : "text-primary/50 not-disabled:hover:bg-primary/60 not-disabled:hover:text-background cursor-pointer disabled:cursor-default "
       }`}
     disabled={isLoading || text === "..."}
   >
@@ -67,7 +68,7 @@ export default function Pagination({
   totalPages,
   onPageChange,
   isLoading = false,
-  maxVisiblePages = 5,
+  maxVisiblePages = 3,
 }: PaginationProps) {
   if (totalPages <= 1) return null;
 
@@ -118,11 +119,11 @@ export default function Pagination({
       <div className="flex items-center gap-1">
         {visiblePages.map((page, index) => (
           <PageButton
-          text={page}
-          key={index}
-          onClick={() => onPageChange(page)}
-          isCurrent={page === currentPage}
-          isLoading={isLoading}
+            text={page}
+            key={index}
+            onClick={() => onPageChange(page)}
+            isCurrent={page === currentPage}
+            isLoading={isLoading}
           />
         ))}
       </div>
