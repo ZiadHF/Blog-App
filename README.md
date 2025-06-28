@@ -51,6 +51,6 @@ npm run lint       # Run linter
 
 ## About
 
-Created by **Ziad**, a computer engineering student from Cairo University, as part of the Buguard assessment to demonstrate modern React/Next.js development skills.
+Created as part of the Buguard assessment to demonstrate modern React/Next.js development skills.
 
 **GitHub**: [ZiadHF](https://github.com/ZiadHF)
