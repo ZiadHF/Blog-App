@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "About This Blog",
+  description: "Learn more about this blog viewer application and its creator.",
+};
+
 export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-8 text-center sm:text-start">

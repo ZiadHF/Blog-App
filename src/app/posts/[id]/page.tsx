@@ -1,11 +1,22 @@
 "use client";
-import { ErrorMessage } from "@/components/ui/loading";
+import { ErrorMessage, PostCardSkeleton } from "@/components/ui/loading";
 import { usePost } from "@/hooks/usePosts";
-import { generateDate, isImageUrl } from "@/lib/utils";
+import { generateDate, isImageUrl, truncateText } from "@/lib/utils";
 import { Post } from "@/types/post";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode, use, useEffect, useState } from "react";
+
+const updateMetadata = (postData: Post) => {
+  document.title = `${postData.title} - The Blog`;
+  let metaDescription = document.querySelector('meta[name="description"]');
+  if (!metaDescription) {
+    metaDescription = document.createElement("meta");
+    metaDescription.setAttribute("name", "description");
+    document.head.appendChild(metaDescription);
+  }
+  metaDescription.setAttribute("content", truncateText(postData.body, 150));
+};
 
 export default function PostPage({
   params,
@@ -20,6 +31,7 @@ export default function PostPage({
     if (!post) return;
 
     const postData = post as Post;
+    updateMetadata(postData);
 
     const formatBodyWithImages = async (body: string) => {
       const linkRegex = /(https?:\/\/[^\s]+)/g;
@@ -76,11 +88,7 @@ export default function PostPage({
   }, [post]);
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    );
+    return <PostCardSkeleton />;
   }
 
   if (error) {
