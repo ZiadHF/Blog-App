@@ -13,7 +13,7 @@ export default function ThemeButton({ theme, onClick }: ThemeButtonProps) {
     >
       <span
         className={`text-sm transition-transform text-background duration-300 ease-in-out ${
-          theme === "dark" ? "translate-x-8" : "translate-x-0"
+          theme === "dark" ? "translate-x-[2.125rem]" : "translate-x-0"
         }`}
       >
         {theme === "light" ? (
@@ -24,7 +24,7 @@ export default function ThemeButton({ theme, onClick }: ThemeButtonProps) {
       </span>
       <div
         className={`rounded-full transition-all duration-300 size-5 bg-background ${
-          theme === "light" ? "translate-x-0" : "-translate-x-8"
+          theme === "light" ? "translate-x-0" : "-translate-x-[2.125rem]"
         }`}
       />
     </div>
